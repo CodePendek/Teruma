@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Te Ruma: Santapan Lezat & Kopi Nikmat</title>
+<meta name="description" content="Nikmati hidangan spesial, kopi pilihan, dan camilan istimewa di Te Ruma.">
+<link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root {
+ --primary: #FFD700;
+ --primary-soft: #FFF9C4;
+ --dark: #212121;
+ --light: #FFFFFF;
+ --text: #333333;
+ --text-light: #666666;
+ --bg: #FAFAFA;
+ --card-bg: #FFFFFF;
+ --border: #E5E5E5;
+}
+
+[data-theme="dark"] {
+ --primary: #FFD700;
+ --primary-soft: #333300;
+ --dark: #E0E0E0;
+ --light: #121212;
+ --text: #F5F5F5;
+ --text-light: #BDBDBD;
+ --bg: #121212;
+ --card-bg: #1E1E1E;
+ --border: #333333;
+}
+
+body {
+ background-color: var(--bg);
+ color: var(--text);
+ transition: all 0.3s ease;
+ padding-top: 80px;
+ overflow-x: hidden;
+ max-width: 100vw;
+}
+
+.container {
+ width: 100%;
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 0 1rem;
+}
+
+.navbar {
+ background-color: var(--light) !important;
+ backdrop-filter: blur(10px);
+ -webkit-backdrop-filter: blur(10px);
+ border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .navbar {
+ background-color: rgba(30, 30, 30, 0.9) !important;
+ border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.hero-section {
+ min-height: 90vh;
+ display: flex;
+ align-items: center;
+ background-color: var(--light);
+ position: relative;
+ overflow: hidden;
+}
+
+.hero-content {
+ position: relative;
+ z-index: 2;
+ text-align: center;
+ padding: 4rem 2rem;
+ max-width: 800px;
+ margin: 0 auto;
+}
+
+.hero-title {
+ font-size: 3.5rem;
+ font-weight: 800;
+ color: var(--dark);
+ margin-bottom: 1.5rem;
+ line-height: 1.2;
+}
+
+.hero-subtitle {
+ font-size: 1.25rem;
+ color: var(--text);
+ margin-bottom: 2.5rem;
+ max-width: 600px;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+.hero-accent {
+ position: absolute;
+ width: 300px;
+ height: 300px;
+ border-radius: 50%;
+ background: var(--primary-soft);
+ filter: blur(80px);
+ z-index: 1;
+}
+
+.accent-1 {
+ top: -150px;
+ right: -150px;
+}
+
+.accent-2 {
+ bottom: -100px;
+ left: -100px;
+}
+
+.hero-btn-primary {
+ background-color: var(--primary);
+ color: var(--dark);
+ border: none;
+ font-weight: 600;
+}
+
+.hero-btn-primary:hover {
+ background-color: var(--dark);
+ color: var(--primary);
+}
+
+.hero-btn-secondary {
+ background-color: transparent;
+ color: var(--dark);
+ border: 2px solid var(--dark);
+ font-weight: 600;
+}
+
+.hero-btn-secondary:hover {
+ background-color: var(--dark);
+ color: var(--light);
+}
+
+.section-title {
+ color: var(--primary);
+ position: relative;
+ padding-bottom: 10px;
+ font-size: 2rem;
+ margin-bottom: 2rem;
+ text-align: center;
+}
+
+.section-title:after {
+ content: '';
+ position: absolute;
+ bottom: 0;
+ left: 50%;
+ transform: translateX(-50%);
+ width: 80px;
+ height: 3px;
+ background-color: var(--primary);
+}
+
+.menu-item-img {
+ width: 100%;
+ height: 200px;
+ object-fit: cover;
+ transition: transform 0.3s ease;
+ border-radius: 8px 8px 0 0;
+}
+
+.card:hover .menu-item-img {
+ transform: scale(1.05);
+}
+
+.table {
+ width: 100%;
+ min-width: 100%;
+}
+
+.table tr {
+ border-bottom: 1px solid var(--border);
+}
+
+.table td {
+ padding: 12px 16px;
+ color: var(--text);
+}
+
+.dropdown .dropdown-content {
+ width: 280px;
+ padding: 1rem;
+ font-size: 1rem;
+ border-radius: 0.5rem;
+ box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+ background-color: var(--light);
+}
+
+.dropdown .dropdown-content li {
+ padding: 0.5rem 0;
+}
+
+.dropdown .dropdown-content a {
+ padding: 0.75rem 1rem;
+ font-size: 1rem;
+ display: flex;
+ align-items: center;
+ border-radius: 0.5rem;
+ transition: all 0.2s ease;
+ color: var(--text);
+}
+
+.dropdown .dropdown-content a:hover {
+ background-color: var(--primary);
+ color: var(--dark);
+}
+
+.dropdown .dropdown-content i {
+ font-size: 1.25rem;
+ width: 1.75rem;
+ margin-right: 0.75rem;
+}
+
+.stats .stat {
+ border-right: 1px solid var(--border);
+}
+
+.stats .stat:last-child {
+ border-right: none;
+}
+
+.btn-primary {
+ background-color: var(--primary);
+ color: var(--dark);
+ border: none;
+}
+
+.btn-primary:hover {
+ background-color: var(--dark);
+ color: var(--primary);
+}
+
+@media (max-width: 768px) {
+ body {
+  padding-top: 60px;
+ }
+ 
+ .hero-title {
+  font-size: 2.5rem;
+ }
+ 
+ .hero-subtitle {
+  font-size: 1.1rem;
+ }
+ 
+ .hero-accent {
+  width: 200px;
+  height: 200px;
+  filter: blur(60px);
+ }
+ 
+ .stats {
+  display: flex;
+  flex-direction: column;
+ }
+ 
+ .stats .stat {
+  width: 100%;
+  border-right: none;
+  border-bottom: 1px solid var(--border);
+ }
+ 
+ .section-title {
+  font-size: 1.75rem;
+ }
+
+ .dropdown .dropdown-content {
+  width: 85vw;
+  max-width: 300px;
+  padding: 1.25rem;
+ }
+
+ .dropdown .dropdown-content a {
+  padding: 1rem 1.25rem;
+  font-size: 1.1rem;
+ }
+
+ .dropdown .dropdown-content i {
+  font-size: 1.5rem;
+  width: 2rem;
+ }
+}
+</style>
+</head>
+<body>
+<div class="navbar fixed top-0 left-0 right-0 z-50 shadow-md">
+ <div class="navbar-start">
+ <a class="btn btn-ghost text-xl font-bold" style="color: var(--primary)">
+ <i class="fas fa-mug-hot mr-2"></i>TE RUMA
+ </a>
+ </div>
+ <div class="navbar-center hidden lg:flex">
+ <ul class="menu menu-horizontal px-1">
+ <li><a href="#menu" style="color: var(--text)"><i class="fas fa-utensils mr-2"></i>Menu</a></li>
+ <li><a href="#about" style="color: var(--text)"><i class="fas fa-info-circle mr-2"></i>Tentang</a></li>
+ <li><a href="#contact" style="color: var(--text)"><i class="fas fa-phone mr-2"></i>Kontak</a></li>
+ </ul>
+ </div>
+ <div class="navbar-end">
+ <label class="swap text-xl swap-rotate btn btn-ghost">
+ <input type="checkbox" id="theme-toggle"/>
+ <i class="fas fa-sun swap-on" style="color: var(--primary)"></i>
+ <i class="fas fa-moon swap-off" style="color: var(--text)"></i>
+ </label>
+ <div class="dropdown dropdown-end lg:hidden">
+ <div tabindex="0" role="button" class="btn btn-ghost">
+ <i class="fas fa-bars text-xl" style="color: var(--text)"></i>
+ </div>
+ <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box">
+ <li><a href="#menu" style="color: var(--text)"><i class="fas fa-utensils mr-3"></i>Menu Lengkap</a></li>
+ <li><a href="#about" style="color: var(--text)"><i class="fas fa-info-circle mr-3"></i>Tentang Kami</a></li>
+ <li><a href="#contact" style="color: var(--text)"><i class="fas fa-phone mr-3"></i>Hubungi Kami</a></li>
+ <li><a id="mobile-theme-toggle" style="color: var(--text)"><i class="fas fa-moon mr-3"></i>Mode Gelap</a></li>
+ </ul>
+ </div>
+ </div>
+</div>
+
+<section class="hero-section">
+ <div class="hero-accent accent-1"></div>
+ <div class="hero-accent accent-2"></div>
+ 
+ <div class="mx-16 -mt-10">
+ <h1 class="hero-title">Selamat Datang di <span style="color: var(--primary)">Te Ruma</span></h1>
+ <p class="hero-subtitle">Nikmati hidangan spesial dan kopi pilihan dengan cita rasa otentik di tempat nyaman kami. Setiap sajian dibuat dengan bahan berkualitas dan penuh passion.</p>
+ <div class="flex lg:flex-wrap justify-center gap-4">
+ <a href="#menu" class="btn dark:text-black hero-btn-primary btn-lg">
+ <i class="fas fa-utensils mr-2"></i> Lihat Menu
+ </a>
+ <a href="#contact" class="btn hero-btn-secondary btn-lg">
+ <i class="fas fa-phone mr-2"></i> Hubungi Kami
+ </a>
+ </div>
+ </div>
+</section>
+
+<section id="about" class="py-16" style="background-color: var(--light)">
+ <div class="container">
+ <h2 class="section-title">Tentang Te Ruma</h2>
+ <div class="bg-base-200 rounded-box p-6 md:p-8 shadow-sm mx-4" style="background-color: var(--card-bg)">
+ <p class="text-lg mb-6">
+ Te Ruma adalah destinasi kuliner Anda di Desa Wasu Kec. Bungku Barat. Kami menyajikan berbagai hidangan lezat mulai dari ayam & udang crispy, sambal bakar otentik, hingga kopi spesial dan dessert yang menggoda.
+ </p>
+ <div class="stats hidden shadow" style="background-color: var(--card-bg)">
+ <div class="stat">
+ <div class="stat-figure" style="color: var(--primary)">
+ <i class="fas fa-mug-hot text-2xl"></i>
+ </div>
+ <div class="stat-title" style="color: var(--text)">Jenis Kopi</div>
+ <div class="stat-value" style="color: var(--primary)">10+</div>
+ <div class="stat-desc" style="color: var(--text-light)">Racikan Spesial</div>
+ </div>
+ <div class="stat">
+ <div class="stat-figure" style="color: var(--primary)">
+ <i class="fas fa-star text-2xl"></i>
+ </div>
+ <div class="stat-title" style="color: var(--text)">Menu Unggulan</div>
+ <div class="stat-value" style="color: var(--primary)">15+</div>
+ <div class="stat-desc" style="color: var(--text-light)">Hidangan Lezat</div>
+ </div>
+ <div class="stat">
+ <div class="stat-figure" style="color: var(--primary)">
+ <i class="fas fa-users text-2xl"></i>
+ </div>
+ <div class="stat-title" style="color: var(--text)">Pelanggan</div>
+ <div class="stat-value" style="color: var(--primary)">500+</div>
+ <div class="stat-desc" style="color: var(--text-light)">Per Bulan</div>
+ </div>
+ </div>
+ </div>
+ </div>
+</section>
+
+<section class="py-16" style="background-color: var(--card-bg)">
+ <div class="container text-center">
+ <h2 class="section-title">Menu Andalan Kami</h2>
+ <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+ <div class="card shadow-xl hover:shadow-2xl transition-all" style="background-color: var(--light)">
+ <figure><img src="img/udang-crispy.jpg" alt="Udang Crispy" class="menu-item-img"/></figure>
+ <div class="card-body items-center text-center">
+ <h3 class="card-title" style="color: var(--text)">Udang Crispy</h3>
+ <p class="text-lg font-bold" style="color: var(--primary)">Rp 35.000</p>
+ <div class="card-actions dark:text-black">
+ <a href="https://wa.me/6282296574891?text=Saya%20ingin%20memesan%20Udang%20Crispy" target="_blank" class="btn dark:text-black btn-primary btn-sm">
+ <i class="fab fa-whatsapp mr-2"></i> Pesan
+ </a>
+ </div>
+ </div>
+ </div>
+ <div class="card shadow-xl hover:shadow-2xl transition-all" style="background-color: var(--light)">
+ <figure><img src="img/sambal-bakar.jpg" alt="Sambal Bakar Iga" class="menu-item-img"/></figure>
+ <div class="card-body items-center text-center">
+ <h3 class="card-title" style="color: var(--text)">Sambal Bakar Iga</h3>
+ <p class="text-lg font-bold" style="color: var(--primary)">Rp 45.000</p>
+ <div class="card-actions">
+ <a href="https://wa.me/6282296574891?text=Saya%20ingin%20memesan%20Sambal%20Bakar%20Iga" target="_blank" class="btn dark:text-black btn-primary btn-sm">
+ <i class="fab fa-whatsapp mr-2"></i> Pesan
+ </a>
+ </div>
+ </div>
+ </div>
+ <div class="card shadow-xl hover:shadow-2xl transition-all" style="background-color: var(--light)">
+ <figure><img src="img/kopi-gula-aren.jpg" alt="Coffee Gula Aren" class="menu-item-img"/></figure>
+ <div class="card-body items-center text-center">
+ <h3 class="card-title" style="color: var(--text)">Coffee Gula Aren</h3>
+ <p class="text-lg font-bold" style="color: var(--primary)">Rp 20.000</p>
+ <div class="card-actions">
+ <a href="https://wa.me/6282296574891?text=Saya%20ingin%20memesan%20Coffee%20Gula%20Aren" target="_blank" class="btn dark:text-black btn-primary btn-sm">
+ <i class="fab fa-whatsapp mr-2"></i> Pesan
+ </a>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+</section>
+
+<section id="menu" class="py-16" style="background-color: var(--light)">
+ <div class="container">
+ <h2 class="section-title text-center">Daftar Menu Lengkap</h2>
+ <div class="grid gap-4 max-w-4xl mx-auto px-4">
+ 
+  <div class="collapse collapse-plus" style="background-color: var(--card-bg)">
+  <input type="radio" name="menu-accordion" checked="checked" /> 
+  <div class="collapse-title text-xl font-medium" style="color: var(--text)">
+  <i class="fas fa-burger mr-2"></i> Burger & Kebab
+  </div>
+  <div class="collapse-content"> 
+  <table class="table">
+  <tbody>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Burger Beef</td>
+  <td class="text-right" style="color: var(--text)">Rp 22.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Burger Chicken</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Kebab Chicken</td>
+  <td class="text-right" style="color: var(--text)">Rp 23.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Kebab Chicken Special</td>
+  <td class="text-right" style="color: var(--text)">Rp 28.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Kebab Beef</td>
+  <td class="text-right" style="color: var(--text)">Rp 25.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Sandwich</td>
+  <td class="text-right" style="color: var(--text)">Rp 23.000</td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+  </div>
+
+  <div class="collapse collapse-plus" style="background-color: var(--card-bg)">
+  <input type="radio" name="menu-accordion" /> 
+  <div class="collapse-title text-xl font-medium" style="color: var(--text)">
+  <i class="fas fa-cookie-bite mr-2"></i> Snack
+  </div>
+  <div class="collapse-content"> 
+  <table class="table">
+  <tbody>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Roti Bakar Coklat</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Roti Bakar Vanila</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Roti Bakar Tiramisu</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Roti Bakar Keju</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Kentang Goreng</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Pisang Gemoy</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Tahu Tuna</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Samosa</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Gohyong</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+  </div>
+ 
+  <div class="collapse collapse-plus" style="background-color: var(--card-bg)">
+  <input type="radio" name="menu-accordion" /> 
+  <div class="collapse-title text-xl font-medium" style="color: var(--text)">
+  <i class="fas fa-drumstick-bite mr-2"></i> Crispy & Fried Chicken
+  </div>
+  <div class="collapse-content"> 
+  <table class="table">
+  <tbody>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Udang Crispy</td>
+  <td class="text-right" style="color: var(--text)">Rp 35.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Ayam 1 Ekor Special</td>
+  <td class="text-right" style="color: var(--text)">Rp 110.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Chicken Big Crispy</td>
+  <td class="text-right" style="color: var(--text)">Rp 90.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">TFC (Fried Chicken)</td>
+  <td class="text-right" style="color: var(--text)">Rp 10.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Ayam Geprek Sambal Ijo</td>
+  <td class="text-right" style="color: var(--text)">Rp 12.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Ayam Geprek Sambal Merah</td>
+  <td class="text-right" style="color: var(--text)">Rp 12.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Spicy Chicken Saus Keju</td>
+  <td class="text-right" style="color: var(--text)">Rp 18.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">TFC Saus Spicy</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">TFC Saus Spicy Mayo</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">TFC Saus Keju</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Nasi</td>
+  <td class="text-right" style="color: var(--text)">Rp 5.000</td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+  </div>
+ 
+  <div class="collapse collapse-plus" style="background-color: var(--card-bg)">
+  <input type="radio" name="menu-accordion" /> 
+  <div class="collapse-title text-xl font-medium" style="color: var(--text)">
+  <i class="fas fa-fire mr-2"></i> Sambal Bakar
+  </div>
+  <div class="collapse-content"> 
+  <table class="table">
+  <tbody>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Sambal Bakar Iga</td>
+  <td class="text-right" style="color: var(--text)">Rp 45.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Sambal Bakar Ayam</td>
+  <td class="text-right" style="color: var(--text)">Rp 30.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Sambal Bakar Ikan</td>
+  <td class="text-right" style="color: var(--text)">Rp 45.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Sambal Bakar Cumi</td>
+  <td class="text-right" style="color: var(--text)">Rp 45.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Sambal Bakar Udang</td>
+  <td class="text-right" style="color: var(--text)">Rp 40.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Sambal Bakar Tahu Tempe</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Sambal Bakar Telur</td>
+  <td class="text-right" style="color: var(--text)">Rp 12.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Sambal Bakar Kangkung</td>
+  <td class="text-right" style="color: var(--text)">Rp 7.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Sambal Bakar Terong</td>
+  <td class="text-right" style="color: var(--text)">Rp 7.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Nasi Putih</td>
+  <td class="text-right" style="color: var(--text)">Rp 5.000</td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+  </div>
+
+  <div class="collapse collapse-plus" style="background-color: var(--card-bg)">
+  <input type="radio" name="menu-accordion" /> 
+  <div class="collapse-title text-xl font-medium" style="color: var(--text)">
+  <i class="fas fa-utensils mr-2"></i> Menu Utama Lainnya
+  </div>
+  <div class="collapse-content"> 
+  <table class="table">
+  <tbody>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Iga Bakar</td>
+  <td class="text-right" style="color: var(--text)">Rp 45.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Ayam Bakar</td>
+  <td class="text-right" style="color: var(--text)">Rp 30.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Ayam Lalapan</td>
+  <td class="text-right" style="color: var(--text)">Rp 30.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Ayam Bawang</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Soto Ayam</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Nasi Goreng Seafood</td>
+  <td class="text-right" style="color: var(--text)">Rp 35.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Nasi Goreng Special</td>
+  <td class="text-right" style="color: var(--text)">Rp 40.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Nasi Goreng</td>
+  <td class="text-right" style="color: var(--text)">Rp 17.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Steak Ayam Barbaque</td>
+  <td class="text-right" style="color: var(--text)">Rp 35.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Steak Ayam Saos Mushroom</td>
+  <td class="text-right" style="color: var(--text)">Rp 35.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Beef Teriyaki</td>
+  <td class="text-right" style="color: var(--text)">Rp 30.000</td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+  </div>
+
+  <div class="collapse collapse-plus" style="background-color: var(--card-bg)">
+  <input type="radio" name="menu-accordion" /> 
+  <div class="collapse-title text-xl font-medium" style="color: var(--text)">
+  <i class="fas fa-mug-hot mr-2"></i> Coffee Menu
+  </div>
+  <div class="collapse-content"> 
+  <h4 class="font-semibold text-lg mb-4" style="color: var(--text)">Hot Coffee</h4>
+  <table class="table mb-8">
+  <tbody>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Coffee Gula Aren</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Espresso</td>
+  <td class="text-right" style="color: var(--text)">Rp 12.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Americano</td>
+  <td class="text-right" style="color: var(--text)">Rp 17.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Mochachino</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Chucucino</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Kopi Susu</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">V60</td>
+  <td class="text-right" style="color: var(--text)">Rp 25.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Kopi Tubruk</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  </tbody>
+  </table>
+  
+  <h4 class="font-semibold text-lg mb-4" style="color: var(--text)">Cold Coffee</h4>
+  <table class="table">
+  <tbody>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Coffee Pandan Teruma</td>
+  <td class="text-right" style="color: var(--text)">Rp 23.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Coffee Gula Aren</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Americano</td>
+  <td class="text-right" style="color: var(--text)">Rp 17.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Coffee Caramel Matchiato</td>
+  <td class="text-right" style="color: var(--text)">Rp 23.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Coffee Tiramisu</td>
+  <td class="text-right" style="color: var(--text)">Rp 23.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Coffee Hazelnut</td>
+  <td class="text-right" style="color: var(--text)">Rp 23.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Coffee Butterschotch</td>
+  <td class="text-right" style="color: var(--text)">Rp 23.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Mochachino</td>
+  <td class="text-right" style="color: var(--text)">Rp 23.000</td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+  </div>
+ 
+  <div class="collapse collapse-plus" style="background-color: var(--card-bg)">
+  <input type="radio" name="menu-accordion" /> 
+  <div class="collapse-title text-xl font-medium" style="color: var(--text)">
+  <i class="fas fa-glass-water mr-2"></i> Non-Coffee Drinks
+  </div>
+  <div class="collapse-content"> 
+  <table class="table">
+  <tbody>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Ice Pandan</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Ice Gula Aren</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Ice Caramel Matchiato</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Ice Hazelnut</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Ice Tiramisu</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Ice Vanilla</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Ice Butterschot</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Ice Coklat</td>
+  <td class="text-right" style="color: var(--text)">Rp 12.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Ice Matcha</td>
+  <td class="text-right" style="color: var(--text)">Rp 12.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Ice Capucino</td>
+  <td class="text-right" style="color: var(--text)">Rp 12.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Ice Taro</td>
+  <td class="text-right" style="color: var(--text)">Rp 12.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Ice Milo</td>
+  <td class="text-right" style="color: var(--text)">Rp 12.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Ice Vanila</td>
+  <td class="text-right" style="color: var(--text)">Rp 12.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Ice Bubble Gum</td>
+  <td class="text-right" style="color: var(--text)">Rp 12.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Ice Red Velvet</td>
+  <td class="text-right" style="color: var(--text)">Rp 12.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Ice Pink Lava</td>
+  <td class="text-right" style="color: var(--text)">Rp 12.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Ice Brown Sugar</td>
+  <td class="text-right" style="color: var(--text)">Rp 12.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Manggo Float</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Leci Float</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Cola Float</td>
+  <td class="text-right" style="color: var(--text)">Rp 17.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Manggo Kulk</td>
+  <td class="text-right" style="color: var(--text)">Rp 17.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Leci Kulk</td>
+  <td class="text-right" style="color: var(--text)">Rp 17.000</td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+  </div>
+
+  <div class="collapse collapse-plus" style="background-color: var(--card-bg)">
+  <input type="radio" name="menu-accordion" /> 
+  <div class="collapse-title text-xl font-medium" style="color: var(--text)">
+  <i class="fas fa-blender mr-2"></i> Jus Spesial
+  </div>
+  <div class="collapse-content"> 
+  <h4 class="font-semibold text-lg mb-4" style="color: var(--text)">Jus Alpukat</h4>
+  <table class="table mb-8">
+  <tbody>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Jus Alpukat</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Alpukat Kocok Milo</td>
+  <td class="text-right" style="color: var(--text)">Rp 17.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Smothis Alpukat</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Alpukat Coffe</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Alpukat Coffe Float</td>
+  <td class="text-right" style="color: var(--text)">Rp 23.000</td>
+  </tr>
+  </tbody>
+  </table>
+  <h4 class="font-semibold text-lg mb-4" style="color: var(--text)">Jus Buah Naga</h4>
+  <table class="table mb-8">
+  <tbody>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Jus Buah Naga</td>
+  <td class="text-right" style="color: var(--text)">Rp 17.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Smothies Buah Naga</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  </tbody>
+  </table>
+  <h4 class="font-semibold text-lg mb-4" style="color: var(--text)">Jus Mangga</h4>
+  <table class="table">
+  <tbody>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Jus Mangga</td>
+  <td class="text-right" style="color: var(--text)">Rp 17.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Smothies Mangga</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+  </div>
+
+  <div class="collapse collapse-plus" style="background-color: var(--card-bg)">
+  <input type="radio" name="menu-accordion" /> 
+  <div class="collapse-title text-xl font-medium" style="color: var(--text)">
+  <i class="fas fa-ice-cream mr-2"></i> Desserts
+  </div>
+  <div class="collapse-content"> 
+  <h4 class="font-semibold text-lg mb-4" style="color: var(--text)">Souffle Pancake</h4>
+  <table class="table mb-8">
+  <tbody>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Coklat</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Tiramisu</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Vanilla</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Matcha</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Strawberry</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Taro</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  </tbody>
+  </table>
+  <h4 class="font-semibold text-lg mb-4" style="color: var(--text)">Souffle Pancake Cream</h4>
+  <table class="table mb-8">
+  <tbody>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Pancake Cream Boba</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Pancake Cream Milo</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Pancake Cream Oreo</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Pancake Cream Crunch</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Pancake Cream Beng-beng</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Pancake Cream Chips</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Pancake Cream Keju</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Pancake Cream Chocolatos</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  </tbody>
+  </table>
+  <h4 class="font-semibold text-lg mb-4" style="color: var(--text)">Japanese Cheese Cake</h4>
+  <table class="table mb-8">
+  <tbody>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Japanese Cheese Cake + Es Cream</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Japanese Cheese Cake</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  </tbody>
+  </table>
+  <h4 class="font-semibold text-lg mb-4" style="color: var(--text)">Taiyaki</h4>
+  <table class="table mb-8">
+  <tbody>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Taiyaki</td>
+  <td class="text-right" style="color: var(--text)">Rp 17.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">+ Es Cream</td>
+  <td class="text-right" style="color: var(--text)">Rp 5.000</td>
+  </tr>
+  </tbody>
+  </table>
+  <h4 class="font-semibold text-lg mb-4" style="color: var(--text)">Banana Roll</h4>
+  <table class="table">
+  <tbody>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Banrol Coklat Keju</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Banrol Coklat Milo</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Banrol Coklat Oreo</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Banrol Vanila Vanila</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Banrol Vanila Milo</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Banrol Vanila Oreo</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Banrol Tiramisu Keju</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Banrol Tiramisu Milo</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Banrol Tiramisu Oreo</td>
+  <td class="text-right" style="color: var(--text)">Rp 15.000</td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+  </div>
+ 
+  <div class="collapse collapse-plus" style="background-color: var(--card-bg)">
+  <input type="radio" name="menu-accordion" /> 
+  <div class="collapse-title text-xl font-medium" style="color: var(--text)">
+  <i class="fas fa-ice-cream mr-2"></i> Ice Cream Menu
+  </div>
+  <div class="collapse-content"> 
+  <table class="table">
+  <tbody>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Cone</td>
+  <td class="text-right" style="color: var(--text)">Rp 10.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Cup</td>
+  <td class="text-right" style="color: var(--text)">Rp 10.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Sundae Coklat</td>
+  <td class="text-right" style="color: var(--text)">Rp 18.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Sundae Boba Strawberry</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Sundae Boba Manggo</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Sundae Boba Brown Sugar</td>
+  <td class="text-right" style="color: var(--text)">Rp 18.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Sundae Choco Crunch</td>
+  <td class="text-right" style="color: var(--text)">Rp 18.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Sundae Choco Chips</td>
+  <td class="text-right" style="color: var(--text)">Rp 18.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Sundae Keju</td>
+  <td class="text-right" style="color: var(--text)">Rp 18.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Sundae Caramel</td>
+  <td class="text-right" style="color: var(--text)">Rp 20.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Sundae Oreo</td>
+  <td class="text-right" style="color: var(--text)">Rp 18.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Sundae Milo</td>
+  <td class="text-right" style="color: var(--text)">Rp 18.000</td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+  </div>
+ 
+  <div class="collapse collapse-plus" style="background-color: var(--card-bg)">
+  <input type="radio" name="menu-accordion" /> 
+  <div class="collapse-title text-xl font-medium" style="color: var(--text)">
+  <i class="fas fa-plus-circle mr-2"></i> Tambahan Topping
+  </div>
+  <div class="collapse-content"> 
+  <h4 class="font-semibold text-lg mb-4" style="color: var(--text)">Topping Souffle Pancake</h4>
+  <table class="table mb-8">
+  <tbody>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Boba</td>
+  <td class="text-right" style="color: var(--text)">Rp 5.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Coco Crunch</td>
+  <td class="text-right" style="color: var(--text)">Rp 3.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Beng-beng</td>
+  <td class="text-right" style="color: var(--text)">Rp 3.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Chocolatos</td>
+  <td class="text-right" style="color: var(--text)">Rp 3.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Choco Chip</td>
+  <td class="text-right" style="color: var(--text)">Rp 3.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Keju</td>
+  <td class="text-right" style="color: var(--text)">Rp 3.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Oreo</td>
+  <td class="text-right" style="color: var(--text)">Rp 3.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Milo</td>
+  <td class="text-right" style="color: var(--text)">Rp 3.000</td>
+  </tr>
+  </tbody>
+  </table>
+  <h4 class="font-semibold text-lg mb-4" style="color: var(--text)">Topping Minuman Non-Coffee</h4>
+  <table class="table mb-8">
+  <tbody>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Regal</td>
+  <td class="text-right" style="color: var(--text)">Rp 3.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Oreo</td>
+  <td class="text-right" style="color: var(--text)">Rp 3.000</td>
+  </tr>
+  </tbody>
+  </table>
+  <h4 class="font-semibold text-lg mb-4" style="color: var(--text)">Tambahan Topping Ice Drink</h4>
+  <table class="table">
+  <tbody>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Float</td>
+  <td class="text-right" style="color: var(--text)">Rp 5.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Boba</td>
+  <td class="text-right" style="color: var(--text)">Rp 3.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Coco Crunch</td>
+  <td class="text-right" style="color: var(--text)">Rp 2.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Regal</td>
+  <td class="text-right" style="color: var(--text)">Rp 3.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Oreo</td>
+  <td class="text-right" style="color: var(--text)">Rp 3.000</td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+  </div>
+
+  <div class="collapse collapse-plus" style="background-color: var(--card-bg)">
+  <input type="radio" name="menu-accordion" /> 
+  <div class="collapse-title text-xl font-medium" style="color: var(--text)">
+  <i class="fas fa-tea mr-2"></i> Teh & Air Mineral
+  </div>
+  <div class="collapse-content"> 
+  <table class="table">
+  <tbody>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Lemon Tea</td>
+  <td class="text-right" style="color: var(--text)">Rp 12.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Leci Tea</td>
+  <td class="text-right" style="color: var(--text)">Rp 12.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Es Teh</td>
+  <td class="text-right" style="color: var(--text)">Rp 5.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Teh Panas</td>
+  <td class="text-right" style="color: var(--text)">Rp 10.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Es Jerk</td>
+  <td class="text-right" style="color: var(--text)">Rp 10.000</td>
+  </tr>
+  <tr>
+  <td class="font-semibold" style="color: var(--text)">Air Mineral</td>
+  <td class="text-right" style="color: var(--text)">Rp 5.000</td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+  </div>
+
+ </div>
+ </div>
+</section>
+
+<section id="contact" class="py-16" style="background-color: var(--card-bg)">
+ <div class="container">
+ <h2 class="section-title text-center">Kunjungi Kami</h2>
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-4">
+ <div class="space-y-6">
+ <div class="flex items-start gap-4">
+ <div class="mt-1" style="color: var(--primary)">
+ <i class="fas fa-map-marker-alt text-xl"></i>
+ </div>
+ <div>
+ <h3 class="text-xl font-semibold" style="color: var(--text)">Alamat</h3>
+ <p class="text-lg" style="color: var(--text)">Desa Wasu Kec. Bungku Barat</p>
+ </div>
+ </div>
+ 
+ <div class="flex items-start gap-4">
+ <div class="mt-1" style="color: var(--primary)">
+ <i class="fas fa-phone-alt text-xl"></i>
+ </div>
+ <div>
+ <h3 class="text-xl font-semibold" style="color: var(--text)">Telepon/WhatsApp</h3>
+ <a href="https://wa.me/6282296574891" target="_blank" class="text-lg link link-hover" style="color: var(--text)">0822-9657-4891</a>
+ </div>
+ </div>
+ 
+ <div class="flex items-start gap-4">
+ <div class="mt-1" style="color: var(--primary)">
+ <i class="fab fa-instagram text-xl"></i>
+ </div>
+ <div>
+ <h3 class="text-xl font-semibold" style="color: var(--text)">Instagram</h3>
+ <a href="https://www.instagram.com/teruma_morowali" target="_blank" class="text-lg link link-hover" style="color: var(--text)">@teruma_morowali</a>
+ </div>
+ </div>
+ 
+ <div class="flex items-start gap-4">
+ <div class="mt-1" style="color: var(--primary)">
+ <i class="far fa-clock text-xl"></i>
+ </div>
+ <div>
+ <h3 class="text-xl font-semibold" style="color: var(--text)">Jam Operasional</h3>
+ <p class="text-lg" style="color: var(--text)">Setiap Hari: 08.00 - 22.00 WITA</p>
+ </div>
+ </div>
+ 
+ <div class="pt-4">
+ <a href="https://wa.me/6282296574891" target="_blank" class="btn btn-primary btn-lg w-full md:w-auto">
+ <i class="fab fa-whatsapp mr-2"></i> Pesan via WhatsApp
+ </a>
+ </div>
+ </div>
+ <div class="w-full h-64 md:h-80 rounded-box shadow-lg overflow-hidden" style="background-color: var(--light)">
+ <iframe
+ src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.9863247282907!2d121.6210999749849!3d-2.908438497104245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d8371f4a8b9b8b7%3A0x3b7c8b8b8b8b8b8b!2s(Lokasi%20Placeholder)%20Te%20Ruma!5e0!3m2!1sid!2sid!4v1703798880000!5m2!1sid!2sid"
+ width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+ </iframe>
+ </div>
+ </div>
+ </div>
+</section>
+
+<footer class="footer p-10 border-t" style="background-color: var(--light); border-color: var(--border)">
+ <div class="container">
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+ <aside>
+ <div class="flex items-center gap-4">
+ <div class="p-3 rounded-full w-16 h-16 flex items-center justify-center" style="background-color: var(--primary)">
+ <i class="fas fa-mug-hot text-2xl" style="color: var(--dark)"></i>
+ </div>
+ <div>
+ <p class="font-bold text-lg" style="color: var(--text)">TE RUMA</p>
+ <p style="color: var(--text-light)">Santapan Lezat & Kopi Nikmat</p>
+ </div>
+ </div>
+ </aside>
+ <nav>
+ <h6 class="footer-title" style="color: var(--text)">Links</h6>
+ <div class="flex flex-col gap-4 text-lg">
+   <a href="#menu" class="link link-hover" style="color: var(--text-light)"><i class="fas fa-utensils mr-2"></i>Menu</a>
+   <a href="#about" class="link link-hover" style="color: var(--text-light)"><i class="fas fa-info-circle mr-2"></i>Tentang</a>
+   <a href="#contact" class="link link-hover" style="color: var(--text-light)"><i class="fas fa-phone mr-2"></i>Kontak</a>
+ </div>
+ </nav>
+ <nav>
+ <h6 class="footer-title" style="color: var(--text)">Social Media</h6>
+ <div class="text-lg lg:grid flex gap-4 grid-flow-col lg:gap-4">
+ <a href="https://www.instagram.com/teruma_morowali" target="_blank" class="link link-hover" style="color: var(--primary)">
+ <i class="fab fa-instagram text-3xl"></i>
+ </a>
+ <a href="https://wa.me/6282296574891" target="_blank" class="link link-hover" style="color: var(--primary)">
+ <i class="fab fa-whatsapp text-3xl"></i>
+ </a>
+ </div>
+ </nav>
+ </div>
+ <div class="mt-8 text-center">
+ <p style="color: var(--text-light)">© 2025 Te Ruma. All rights reserved.</p>
+ </div>
+ </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+ const themeToggle = document.getElementById('theme-toggle');
+ const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+ const html = document.documentElement;
+ 
+ const savedTheme = localStorage.getItem('theme') || 'light';
+ html.setAttribute('data-theme', savedTheme);
+ 
+ if (themeToggle) {
+ themeToggle.checked = savedTheme === 'dark';
+ }
+ 
+ function toggleTheme() {
+ const currentTheme = html.getAttribute('data-theme');
+ const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+ 
+ html.setAttribute('data-theme', newTheme);
+ localStorage.setItem('theme', newTheme);
+ 
+ if (themeToggle) {
+ themeToggle.checked = newTheme === 'dark';
+ }
+ }
+ 
+ if (themeToggle) {
+ themeToggle.addEventListener('change', toggleTheme);
+ }
+ 
+ if (mobileThemeToggle) {
+ mobileThemeToggle.addEventListener('click', function(e) {
+ e.preventDefault();
+ toggleTheme();
+ document.activeElement.blur();
+ });
+ }
+ 
+ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+ anchor.addEventListener('click', function(e) {
+ e.preventDefault();
+ const targetId = this.getAttribute('href');
+ if (targetId === '#') return;
+ 
+ const targetElement = document.querySelector(targetId);
+ if (targetElement) {
+ targetElement.scrollIntoView({
+ behavior: 'smooth',
+ block: 'start'
+ });
+ }
+ });
+ });
+});
+</script>
+</body>
+</html>
